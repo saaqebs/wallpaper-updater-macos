@@ -20,7 +20,7 @@ def update_wallpaper(is_collection):
 
 
 def main():
-    schedule.every().day.at("02:00").do(update_wallpaper)
+    schedule.every().day.at("02:00").do(update_wallpaper(True))
     update_wallpaper(True)
 
 
