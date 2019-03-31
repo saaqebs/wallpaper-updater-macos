@@ -1,5 +1,4 @@
 import wallpaper as wp
-import schedule
 
 '''
 Global variables you may change according to your preferences.
@@ -19,7 +18,19 @@ def update_wallpaper(is_collection):
     wp.change_wallpaper(directory)
 
 
+def update_picture(is_collection):
+    wp.delete_old_wallpaper(directory)
+    if (is_collection):
+        wp.download_wallpaper_from_collection(collection_url, directory)
+    else:
+        wp.download_wallpaper_from_search(keywords, directory)
+
+
 def main():
+    update_picture(True)
+
+
+def old_main():
     schedule.every().day.at("02:00").do(update_wallpaper(True))
     update_wallpaper(True)
 
